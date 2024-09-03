@@ -1,0 +1,22 @@
+{% extends 'tickets/base.html' %}
+
+{% block content %}
+
+
+<div class="searchflyghtblock">
+    <form action="{% url 'flyght_search' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Поиск</button>
+</form>
+
+<div class="results">
+    <ul>
+        {% for i in search_results %}
+        <li><a href="{{ i.get_absolute_url }}">{{ i.arrival }} {{ i.departure }} {{ i.price }} {{ i.quantity }}</a></li>>
+        {% endfor %}
+    </ul>
+</div>
+</div>
+
+{% endblock %}

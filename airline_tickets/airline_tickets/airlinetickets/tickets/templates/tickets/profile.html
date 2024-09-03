@@ -1,0 +1,30 @@
+{% extends 'tickets/base.html' %}
+
+{% block content %}
+
+    <div class="profile_block">
+        <h1>{{ title }}</h1>
+
+
+<p>Имя пользователя {{ profile.user }}</p>
+    <p>Ваш баланс  {{ flight.balance }}</p>
+
+    {% if bought_tickets %}
+        <h2>Ваши купленые билеты</h2>
+        {% for i in bought_tickets %}
+
+            <div class="bought_tickets">
+                <p>Направление: {{ i.flyes_id }}</p>
+                <p>Время вылета: {{ i.flyes_id.departure_date }}</p>
+                <p>Время вылета: {{ i.flyes_id.arrival_date }}</p>
+                <p>Номер вышего места: {{ i.place_number }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h2>У вас еще нет купленных билетов</h2>
+    {% endif %}
+    </div>
+
+
+
+{% endblock %}
